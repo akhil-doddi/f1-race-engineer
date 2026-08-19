@@ -15,13 +15,13 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                bat 'docker build -t f1-race-engineer:2.0 .'
+                bat 'docker build -t f1-race-engineer:3.0 .'
             }
         }
         
         stage('Docker Tag') {
             steps {
-                bat 'docker tag f1-race-engineer:2.0 akhildoddi/f1-race-engineer:2.0'
+                bat 'docker tag f1-race-engineer:2.0 akhildoddi/f1-race-engineer:3.0'
             }
         }
         stage('Docker Push') {
@@ -32,7 +32,7 @@ pipeline {
                     passwordVariable: 'DOCKER_PASSWORD'
                 )]) {
                     bat 'docker login -u "%DOCKER_USERNAME%" -p "%DOCKER_PASSWORD%"'
-                    bat 'docker push akhildoddi/f1-race-engineer:2.0'
+                    bat 'docker push akhildoddi/f1-race-engineer:3.0'
                 }
              }
          }

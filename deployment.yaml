@@ -14,4 +14,6 @@ spec:
     spec:
       containers:
         - name: f1-race-engineer
-          image: akhildoddi/f1-race-engineer:2.0
+          image: akhildoddi/f1-race-engineer:3.0
+          ports:
+            - containerPort: 8081
