@@ -18,5 +18,11 @@ pipeline {
                 bat 'docker build -t f1-race-engineer:2.0 .'
             }
         }
+        
+        stage('Docker Tag') {
+            steps {
+                bat 'docker tag f1-race-engineer:2.0 akhildoddi/f1-race-engineer:2.0'
+            }
+        }
     }
 }
