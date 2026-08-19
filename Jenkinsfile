@@ -12,5 +12,11 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                bat 'docker build -t f1-race-engineer:2.0 .'
+            }
+        }
     }
 }
