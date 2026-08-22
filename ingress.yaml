@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: f1-race-ingress
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - f1.local
+      secretName: f1-tls-secret
+  rules:
+    - host: f1.local
+      http:  
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: f1-race-service
+                port:
+                  number: 8081          
+          - path: /hello
+            pathType: Prefix
+            backend:
+              service:
+                name: f1-api-service
+                port:
+                  number: 5678   
+
+    - host: api.f1.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: f1-api-service
+                port:
+                  number: 5678      

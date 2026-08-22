@@ -15,5 +15,26 @@ spec:
       containers:
         - name: f1-race-engineer
           image: akhildoddi/f1-race-engineer:3.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
+          envFrom:
+            - configMapRef:
+                name: f1-race-config
+            - secretRef:
+                name: f1-race-secret
+          volumeMounts:
+            - name: f1-config-volume
+              mountPath: /config
+          volumeMounts:
+            - name: f1-secret-volume
+              mountPath: /config/secret
+              readOnly: true
+      volumes:
+        - name: f1-config-volume
+          configMap:
+            name: f1-file-config
+      volumes:
+        - name: f1-secret-volume
+          secret:
+            secretName: f1-race-secret

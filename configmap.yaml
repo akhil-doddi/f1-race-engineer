@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: f1-race-config
+data:
+  APP_NAME: "F1 Race Engineer"
+  APP_ENV: "production"

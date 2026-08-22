@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: f1-file-config
+data:
+  application.properties: |
+    app.name=F1 Race Engineer
+    app.environment=production
+    app.message=Hello from ConfigMap volume!
